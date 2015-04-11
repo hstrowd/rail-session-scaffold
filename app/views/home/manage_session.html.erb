@@ -1,0 +1,19 @@
+<div id="session-info">
+  <div class="title">Session Info</div>
+  <div class="attr">
+    <div class="name">Class</div>
+    <div class="content"><%= session.class %></div>
+  </div>
+  <div class="attr">
+    <div class="name">ID</div>
+    <div class="content"><%= session.id %></div>
+  </div>
+  <div class="attr">
+    <div class="name">Keys</div>
+    <div class="content"><%= session.keys %></div>
+  </div>
+  <div class="attr">
+    <div class="name">Content</div>
+    <div class="content"><%= session.to_hash.inspect %></div>
+  </div>
+</div>
