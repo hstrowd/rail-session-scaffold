@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
       return
     end
 
-    # TODO: Should this connection be persisted and shared across processes?
-    redisStore = ActiveSupport::Cache::RedisStore.new(Rails.application.config.redis_connection_params)
+    # TODO: Look into connection pooling for this.
+    redisStore = Redis::Store.new(Rails.application.config.redis_connection_params)
     requestedSession = redisStore.read(params[:id])
 
     if !requestedSession

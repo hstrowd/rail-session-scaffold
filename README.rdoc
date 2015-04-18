@@ -16,6 +16,14 @@ The following steps are required to run this server:
 * Run the Redis server using the "redis-server" command.
 * Run the Rails server using the "rails server" command.
 
+To setup a Redis cluster to back this server, use the steps outlined at http://redis.io/topics/cluster-tutorial. In addition to this, please be mindful of the following:
+
+* The redis-trib.rb tool depends on the redis gem, so be sure to have that installed.
+* I have included the config files I used to setup a cluster in docs/redis/cluster.
+  * Prior to using these, please update the docs/redis/redis.conf file to point to your default redis.conf file.
+  * After launching all six of these redis instances, you will need to run the following command from the Redis src directory to properly configure the cluster:
+
+./redis-trib.rb create --replicas 1 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005
 
 == Helpful Tips
 
@@ -25,3 +33,14 @@ The following tips may prove helpful as you explore and work with Redis sessions
 * Use the following steps to lookup a session directly in Redis:
   * Copy the session ID as shown in the "Session Content" section on the app's root page.
   * Run the following command within the Redis CLI "get <SESSION_ID>", where "<SESSION_ID>" is replaced by the session ID value.
+* Be very careful when managing concurrent access to records in your Redis database.
+  * As highlighted in the Redis Cluster Specification documentation "Very high performances and scalability while preserving weak but reasonable forms of data safety and availability is the main goal of Redis Cluster."
+
+
+== Other Resources
+
+The following resources may also prove to be beneficial:
+
+* Redis Cluster Setup: http://redis.io/topics/cluster-tutorial
+* Redis Cluster Specification: http://redis.io/topics/cluster-spec
+  * If you plan to deploy a redis cluster, I recommend reading this document carefully to ensure you understand the considerations to be taken in setting up and operating this cluster.
