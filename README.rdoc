@@ -1,9 +1,8 @@
 = README
----
 
 == Purpose
 
-This app provides a scaffold for understanding, testing, and instrumenting various types of rails sessions. 
+This app provides a scaffold for understanding, testing, and instrumenting various types of rails sessions.
 
 
 == Setup
