@@ -1,0 +1,6 @@
+{
+  "id": "<%= session.id.to_s %>",
+  "class": "<%= session.class.to_s %>",
+  "keys": <%= raw(session.keys.to_json) %>,
+  "content": <%= raw(session.to_hash.to_json) %>
+}

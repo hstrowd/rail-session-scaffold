@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rails Session Test App</title>
+  <title>Rails Session Scaffold</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div id="header">
+    <div class="centerer">
+      <div class="title">Rails Session Scaffold</div>
+    </div>
+  </div>
+
+  <div id="page-body">
+    <div class="top-gradient"></div>
+      <div class="content">
+        <%= yield %>
+      </div>
+  </div>
+
+
+  <div id="footer">
+    <div class="top-gradient"></div>
+    <div class="copyright">Copyright &copy; 2015, Harrison Strowd.</div>
+  </div>
 
 </body>
 </html>
