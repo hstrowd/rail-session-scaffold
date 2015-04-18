@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  resource :session, :defaults => { :format => 'json' }
 
-  root 'home#manage_session'
+  root 'home#index'
 end

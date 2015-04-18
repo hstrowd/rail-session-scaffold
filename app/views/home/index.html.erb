@@ -1,0 +1,61 @@
+<div id="home-index">
+  <div class="intro">
+    <div class="title">Purpose</div>
+    <div class="body">This is a small application designed to support testing of and experimentation with various types of Rails sessions. The details of your session will be displayed below and you can operate on it using the provided controls.</div>
+  </div>
+
+  <div id="session-alerts">
+  </div>
+
+  <div class="session-view">
+    <div class="title">Session Content</div>
+    <div id="session-content">
+      <div class="attr id">
+        <span class="label">ID: </span>
+        <span class="value"></span>
+      </div>
+      <div class="attr class">
+        <span class="label">Class: </span>
+        <span class="value"></span>
+      </div>
+      <div class="attr keys">
+        <span class="label">Keys: </span>
+        <span class="value"></span>
+      </div>
+      <div class="attr body">
+        <span class="label">Body: </span>
+        <span class="value"></span>
+      </div>
+    </div>
+  </div>
+
+  <div id="session-controls">
+    <div class="title">Controls</div>
+    <div class="control load">
+      <div class="label">Load:</div>
+      <input type="button" value="Go!" onClick="sessionManager.load();"/>
+      <input type="text" name="id" placeholder="Session ID"/>
+    </div>
+    <div class="control update">
+      <div class="label">Set/Update:</div>
+      <input type="button" value="Go!" onClick="sessionManager.update();"/>
+      <input type="text" name="key" placeholder="Key"/>:
+      <input type="text" name="value" placeholder="Value"/>
+    </div>
+    <div class="control refresh">
+      <div class="label">Refresh:</div>
+      <input type="button" value="Go!" onClick="sessionManager.refresh();"/>
+    </div>
+    <div class="control clear">
+      <div class="label">Clear:</div>
+      <input type="button" value="Go!" onClick="sessionManager.clear();"/>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $(function() {
+    sessionManager.refresh();
+  });
+</script>
