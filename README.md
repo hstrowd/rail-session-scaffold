@@ -1,13 +1,15 @@
-= README
+# README
 
-== Purpose
+
+## Purpose
+
 
 This app provides a scaffold for understanding, testing, and instrumenting various types of rails sessions.
 
 
-== Setup
+Setup
 
-=== Non-Clustered Redis Server
+### Non-Clustered Redis Server
 
 The following steps are required to run this server against a single Redis server:
 
@@ -22,7 +24,7 @@ The following steps are required to run this server against a single Redis serve
 * Run the Rails server using the "rails server" command.
 
 
-=== Cluster of Redis Servers
+### Cluster of Redis Servers
 
 To setup a Redis cluster to back this server, use the steps outlined at http://redis.io/topics/cluster-tutorial. In addition to this, please be mindful of the following:
 
@@ -31,16 +33,16 @@ To setup a Redis cluster to back this server, use the steps outlined at http://r
   * Prior to using these, please update the docs/redis/redis.conf file to point to your default redis.conf file.
   * After launching all six of these redis instances, you will need to run the following command from the Redis src directory to properly configure the cluster:
 
-./redis-trib.rb create --replicas 1 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005
+        ./redis-trib.rb create --replicas 1 127.0.0.1:7000 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005
 
 * To run multiple Rails servers against these nodes, use commands like the following to explicitly set the port and process ID file for each Rails server:
 
-rails server -p 3000 -P /tmp/rails-3000.pid
-rails server -p 3001 -P /tmp/rails-3001.pid
-rails server -p 3002 -P /tmp/rails-3002.pid
-rails server -p 3003 -P /tmp/rails-3003.pid
-rails server -p 3004 -P /tmp/rails-3004.pid
-rails server -p 3005 -P /tmp/rails-3005.pid
+        rails server -p 3000 -P /tmp/rails-3000.pid
+        rails server -p 3001 -P /tmp/rails-3001.pid
+        rails server -p 3002 -P /tmp/rails-3002.pid
+        rails server -p 3003 -P /tmp/rails-3003.pid
+        rails server -p 3004 -P /tmp/rails-3004.pid
+        rails server -p 3005 -P /tmp/rails-3005.pid
 
   * You will need to manually change the Redis server's port before running each of these servers to ensure they are all connecting to different nodes in the Redis cluster.
   * Unfortunately passing this value in as a command line parameter when running the server is not currently supported.
@@ -57,7 +59,7 @@ redis.get(4790)
   * I would suggest retrieving the same key from all master servers to confirm that clustering support is working properly.
 
 
-== Helpful Tips
+## Helpful Tips
 
 The following tips may prove helpful as you explore and work with Redis sessions:
 
@@ -69,7 +71,7 @@ The following tips may prove helpful as you explore and work with Redis sessions
   * As highlighted in the Redis Cluster Specification documentation "Very high performances and scalability while preserving weak but reasonable forms of data safety and availability is the main goal of Redis Cluster."
 
 
-== Other Resources
+## Other Resources
 
 The following resources may also prove to be beneficial:
 
