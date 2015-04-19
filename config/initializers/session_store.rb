@@ -7,4 +7,4 @@ Rails.application.config.redis_connection_params = {
   :db => 0,
   :expires_in => 90.minutes
 }
-Rails.application.config.session_store :redis_store, Rails.application.config.redis_connection_params
+Rails.application.config.session_store :redis_store, servers: Rails.application.config.redis_connection_params
