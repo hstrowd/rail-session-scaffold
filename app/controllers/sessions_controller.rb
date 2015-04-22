@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   def create
     if !params[:id]
       render status: :bad_request
@@ -7,7 +9,7 @@ class SessionsController < ApplicationController
 
     # TODO: Look into connection pooling for this.
     redisStore = Redis::Store.new(Rails.application.config.redis_connection_params)
-    requestedSession = redisStore.read(params[:id])
+    requestedSession = redisStore.get(params[:id])
 
     if !requestedSession
       render status: :bad_request, json: {
